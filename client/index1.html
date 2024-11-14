@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Index 1</title>
+    <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@200;600&display=swap" rel="stylesheet">
+    <script src="https://feed.vinfotech.org/nodeapp/assets/socket.io.min.js"></script>
+    <script src="https://feed.vinfotech.org/nodeapp/assets/jquery-1.11.1.js"></script>
+</head>
+
+<body>
+    <script>
+        $(document).ready(function () {
+
+            const siteUrl = 'http://localhost:3001/';
+            const socket = io.connect(siteUrl);
+
+            var user_data = { "user_id": 1, "name": "user1" };
+            socket.emit('clientMessage1', user_data);
+
+            socket.on('clientMessage1R', function (result) {
+                console.log("clientMessage1R", result);
+            });
+
+        });
+    </script>
+</body>
+
+</html>
